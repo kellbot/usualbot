@@ -10,13 +10,13 @@
 
 module.exports = (robot) ->
     robot.router.post '/hubot/chatsecrets/', (req, res) ->
-    room   = 'CN9U5BFM2'
-    data   = if req.body.payload? then JSON.parse req.body.payload else req.body
-    secret = data.secret
+      room   = 'CN9U5BFM2'
+      data   = if req.body.payload? then JSON.parse req.body.payload else req.body
+      secret = data.secret
 
-    robot.messageRoom room, "I have a secret: #{secret}"
+      robot.messageRoom room, "I have a secret: #{secret}"
 
-    res.send 'OK'
+      res.send 'OK'
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
   #   if doorType is "pod bay"
