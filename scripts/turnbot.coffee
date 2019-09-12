@@ -1,8 +1,11 @@
 module.exports = (robot) ->
 
-  robot.router.get "/flybot/message", (req, res) ->
+  robot.router.get "/turnbot/gameturn", (req, res) ->
     room   = 'CN9U5BFM2'
-    robot.messageRoom room, "test"
+    data   = if req.body.payload? then JSON.parse req.body.payload else req.body
+    secret = data.secret
+
+    robot.messageRoom room, "I have a secret: #{secret}"
     
     res.set 'Content-Type', 'text/plain'
     res.send 'OK'
