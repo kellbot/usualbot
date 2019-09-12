@@ -5,7 +5,7 @@ module.exports = (robot) ->
     data   = if req.body.payload? then JSON.parse req.body.payload else req.body
 #    secret = data.secret
 
-    robot.messageRoom room, "I have a secret: #{data}"
+    robot.messageRoom room, "I have a secret: #{data.secret}"
     
     res.set 'Content-Type', 'text/plain'
     res.send 'OK'
