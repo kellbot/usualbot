@@ -17,6 +17,11 @@ module.exports = (robot) ->
       robot.messageRoom room, "I have a secret: #{secret}"
 
       res.send 'OK'
+      
+    robot.router.get '/', (req, res) ->
+      room   = 'CN9U5BFM2'
+      robot.messageRoom room, "test"
+      
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
   #   if doorType is "pod bay"
