@@ -9,10 +9,14 @@
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = (robot) ->
+    robot.router.post '/hubot/chatsecrets/', (req, res) ->
+    room   = 'CN9U5BFM2'
+    data   = if req.body.payload? then JSON.parse req.body.payload else req.body
+    secret = data.secret
 
-  # robot.hear /badger/i, (res) ->
-  #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
-  #
+    robot.messageRoom room, "I have a secret: #{secret}"
+
+    res.send 'OK'
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
   #   if doorType is "pod bay"
